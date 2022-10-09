@@ -1,38 +1,23 @@
 import React, { useState } from 'react';
+import ToDoForm from './ToDoForm';
+import List from './List';
 import './ToDo.css'
+
 function ToDo() {
 
-    const [text, setText] = useState('');
     const [items, setItems] = useState([]);
 
-    function handleTyping(typing) {
-        let text = typing.target.value;
-        setText(text);
+    function onAddItem(item) {
+        setItems([...items, item])
     }
 
-    function addItem(click) {
-        click.preventDefault();
-        if (text) {
-            setItems([...items, text])
-            setText('');
-        }
-    }
-
-    let page =
+    return (
         <div className="container">
             <h1>To-do</h1>
-            <form>
-                <input onChange={handleTyping} type="text" value={text}></input>
-                <button onClick={addItem}>Add</button>
-            </form>
+            <ToDoForm onAddItem={onAddItem}></ToDoForm>
+            <List items={items}></List>
 
-            <ul>
-                {items.map(item => <li>{item}</li>)}
-            </ul>
-
-        </div>
-
-    return (page)
+        </div>)
 }
 
 export default ToDo;
