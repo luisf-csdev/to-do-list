@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
-function Modal(props) {
+export default function DeleteModal(props) {
 
     function hideModal(click) {
         let target = click.target;
@@ -12,7 +12,7 @@ function Modal(props) {
 
     return (
         <div id="modal" onClick={hideModal} className={props.show ? "modal" : "modal hide"}>
-            <Card className='cardModal'>
+            <Card className='cardModal delete-modal'>
                 {props.children}
             </Card>
         </div>
@@ -20,4 +20,3 @@ function Modal(props) {
 
 }
 
-export default Modal;

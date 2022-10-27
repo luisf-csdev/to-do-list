@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-anonymous-default-export */
 
 export default (state = [], action) => {
@@ -13,6 +14,15 @@ export default (state = [], action) => {
                 }
                 return item
             })
+        case 'MOVE_ITEM':
+
+            const { idStart, idEnd, indexStart, indexEnd, id } = action.payload
+            const newState = [...state]
+            const item = newState.splice(indexStart, 1);
+            newState.splice(indexEnd, 0, ...item)
+
+            return newState;
+
         default:
             return state;
     }

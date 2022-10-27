@@ -1,48 +1,53 @@
 import React, { useState } from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import './index.css'
 import Modal from './components/Modal';
 import ToDoForm from './components/ToDoForm';
 import List from './components/List';
-import './ToDo.css'
-import { createStore } from 'redux';
-
 import listReducer from './reducers/listReducer';
-import { Provider } from 'react-redux';
+import Header from './components/Header';
+import DeleteModal from './components/DeleteModal';
+import DeleteList from './components/DeleteList';
+import EmptyMessage from './components/EmptyMessage';
 
-const SAVED_ITEMS = "savedItems"
 
-function persistState(state) {
-    localStorage.setItem(SAVED_ITEMS, JSON.stringify(state));
-}
-function loadState() {
+export default function ToDo() {
+
+    const SAVED_ITEMS = "savedItems"
     const currentState = localStorage.getItem(SAVED_ITEMS);
-    if (currentState)
-        return JSON.parse(currentState)
-    else
-        return []
-}
-
-const store = createStore(listReducer, loadState());
-
-store.subscribe(() => {
-    persistState(store.getState());
-})
-
-function ToDo() {
-
+    const store = createStore(listReducer, loadState());
     const [showModal, setShowModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+    store.subscribe(() => persistState(store.getState()));
+
+    function persistState(state) {
+        localStorage.setItem(SAVED_ITEMS, JSON.stringify(state));
+    }
+
+    function loadState() {
+        if (currentState)
+            return JSON.parse(currentState)
+        else
+            return []
+    }
 
     function onHideModal(click) {
         setShowModal(false);
+        setShowDeleteModal(false);
     }
 
     return (
         <div className="container">
             <Provider store={store}>
-                <header className='header'><h1>To-do</h1> <button onClick={() => { setShowModal(true) }} className='addButton'>+</button></header>
-                <List></List>
-                <Modal show={showModal} onHideModal={onHideModal}><ToDoForm onHideModal={onHideModal}></ToDoForm></Modal>
+                <Header setShowDeleteModal={() => setShowDeleteModal(true)} setShowModal={() => { setShowModal(true) }} />
+                <List />
+                <EmptyMessage currentState={currentState} />
+                <Modal show={showModal} onHideModal={onHideModal}><ToDoForm onHideModal={onHideModal} /></Modal>
+                <DeleteModal show={showDeleteModal} onHideModal={onHideModal}><DeleteList /></DeleteModal>
             </Provider>
-        </div>)
-}
+        </div>
+    )
 
-export default ToDo;
+}

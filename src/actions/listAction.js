@@ -12,3 +12,7 @@ export function deleteItem(id) {
 export function changeDone(id) {
     return { type: 'CHANGE_DONE', payload: id }
 }
+
+export function moveItem(idStart, idEnd, indexStart, indexEnd, id) {
+    return { type: 'MOVE_ITEM', payload: { idStart, idEnd, indexStart, indexEnd, id } }
+}

@@ -21,9 +21,9 @@ function ToDoForm(props) {
     }
 
     return (
-        <form>
-            <input onChange={handleTyping} type="text" value={text}></input>
-            <button onClick={addItemEvent}>Add</button>
+        <form id='form-task' >
+            <input id='new-task' onChange={handleTyping} maxLength='30' type="text" placeholder="What do you have to do?" value={text}></input>
+            <button id='add-task' onClick={addItemEvent}></button>
         </form>
     )
 }
