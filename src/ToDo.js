@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css'
@@ -38,13 +38,24 @@ export default function ToDo() {
         setShowDeleteModal(false);
     }
 
+    useEffect(() => {
+        document.addEventListener('keydown', detectKeyDown, true)
+    }, []);
+
+    const detectKeyDown = (event) => {
+        if (event.key === 'Enter')
+            setShowModal(true)
+        else if (event.key === 'Delete')
+            setShowDeleteModal(true)
+    }
+
     return (
         <div className="container">
             <Provider store={store}>
                 <Header setShowDeleteModal={() => setShowDeleteModal(true)} setShowModal={() => { setShowModal(true) }} />
                 <List />
                 <EmptyMessage currentState={currentState} />
-                <Modal show={showModal} onHideModal={onHideModal}><ToDoForm onHideModal={onHideModal} /></Modal>
+                <Modal show={showModal} onHideModal={onHideModal}><ToDoForm show={showModal} onHideModal={onHideModal} /></Modal>
                 <DeleteModal show={showDeleteModal} onHideModal={onHideModal}><DeleteList /></DeleteModal>
             </Provider>
         </div>
