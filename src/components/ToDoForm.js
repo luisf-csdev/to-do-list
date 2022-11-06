@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../actions/listAction';
 import useAutoFocus from '../hooks/useAutoFocus';
@@ -20,6 +20,12 @@ function ToDoForm(props) {
             props.onHideModal()
         }
     }
+
+    useEffect(() => {
+        if (!props.show) {
+            setText('')
+        }
+    }, [props.show])
 
     const taskText = useAutoFocus(props)
 

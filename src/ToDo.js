@@ -43,10 +43,18 @@ export default function ToDo() {
     }, []);
 
     const detectKeyDown = (event) => {
-        if (event.key === 'Enter')
+        if (event.key === 'Enter') {
             setShowModal(true)
-        else if (event.key === 'Delete')
+            setShowDeleteModal(false)
+        }
+        else if (event.key === 'Delete') {
             setShowDeleteModal(true)
+            setShowModal(false)
+        }
+        else if (event.key === 'Escape') {
+            setShowDeleteModal(false)
+            setShowModal(false)
+        }
     }
 
     return (
