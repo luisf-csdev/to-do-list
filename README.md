@@ -30,7 +30,6 @@
 <br>
 
 ## ⌨️ Hotkeys 
-Del open delete screen and 
 - [x] Enter: add a task
 - [x] Del: open delete tasks pop-up
 - [x] Esc: exit pop-ups
