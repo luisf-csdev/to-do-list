@@ -78,6 +78,10 @@ npm start
             src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" 
         />
     </a>
+    <a href='https://redux.js.org/'>
+        <img alt="luisf-node" height="50rem"
+            src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" 
+        />
     <a href='https://nodejs.org/'>
         <img alt="luisf-node" height="50rem"
             src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" 
