@@ -79,12 +79,12 @@ body {
 }
 
 .add-btn {
-  background-color: #d9dafc;
+  background-color: #ffe2f1;
   background-image: url(../public/assets/images/add2.png);
 }
 
 .add-btn:hover {
-  background-color: #cfd0fa;
+  background-color: #ffd0e9;
   background-image: url(../public/assets/images/add2.png);
 }
 
