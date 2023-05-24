@@ -35,7 +35,7 @@
 - [x] Esc: exit pop-ups
 <br>
 
-## [✅TRY IT YOURSELF✅](https://chat-rooms-socket.netlify.app/)
+## [✅TRY IT YOURSELF✅](https://todo-list-reactredux.netlify.app/)
 <div align="center">
     <img alt="gif-1" width="450rem" src="./github/to-do-list-gif1.gif"><br>
     <img alt="gif-2" width="450rem" src="./github/to-do-list-gif2.gif">
