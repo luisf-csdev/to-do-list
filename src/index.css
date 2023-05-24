@@ -17,8 +17,8 @@
 
 body {
   min-height: 100vh;
-  background: rgb(154, 155, 255);
-  background: linear-gradient(360deg, rgba(154, 155, 255, 1) 25%, rgba(171, 172, 255, 1) 65%, rgba(217, 218, 252, 1) 100%);
+  background: rgb(255,208,233);
+  background: linear-gradient(90deg, rgba(255,208,233,1) 25%, rgba(255,226,241,1) 65%, rgba(245,225,235,1) 100%);
 }
 
 .container {
